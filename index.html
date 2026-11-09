@@ -1,0 +1,497 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Petek Armatür</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Düzen: solda sabit koyu sahne (3B model), sağda parametre paneli; dar ekranda üst üste. */
+:root{
+  color-scheme:light;
+  --bg:#fff3d6; --panel:rgba(255,251,240,.84); --fg:#3b2a12; --muted:#7c6741; --line:#eed9a6;
+  --accent:#a85f00; --accent-ink:#ffffff; --chip:#fbebc0;
+  --stage:#1c140b; --stage-ink:#f1e2c2; --stage-line:rgba(241,226,194,.3);
+  --f-body:'Schibsted Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'Chivo Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  --hex:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+}
+
+*{box-sizing:border-box}
+body::before,body::after{content:"";position:fixed;z-index:0;width:min(46vw,340px);aspect-ratio:1.184;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 256 216%22 fill=%22none%22 stroke=%22rgb%28222%2C176%2C84%29%22 stroke-opacity=%22.42%22 stroke-width=%222.2%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M46.4 41.5 L26.5 53.0 L6.6 41.5 L6.6 18.5 L26.5 7.0 L46.4 18.5 Z%22/%3E%3Cpath d=%22M91.5 41.5 L71.5 53.0 L51.6 41.5 L51.6 18.5 L71.5 7.0 L91.5 18.5 Z%22/%3E%3Cpath d=%22M136.5 41.5 L116.6 53.0 L96.7 41.5 L96.7 18.5 L116.6 7.0 L136.5 18.5 Z%22/%3E%3Cpath d=%22M181.5 41.5 L161.6 53.0 L141.7 41.5 L141.7 18.5 L161.6 7.0 L181.5 18.5 Z%22/%3E%3Cpath d=%22M226.6 41.5 L206.6 53.0 L186.7 41.5 L186.7 18.5 L206.6 7.0 L226.6 18.5 Z%22/%3E%3Cpath d=%22M114.0 80.5 L94.1 92.0 L74.1 80.5 L74.1 57.5 L94.1 46.0 L114.0 57.5 Z%22/%3E%3Cpath d=%22M159.0 80.5 L139.1 92.0 L119.2 80.5 L119.2 57.5 L139.1 46.0 L159.0 57.5 Z%22/%3E%3Cpath d=%22M204.1 80.5 L184.1 92.0 L164.2 80.5 L164.2 57.5 L184.1 46.0 L204.1 57.5 Z%22/%3E%3Cpath d=%22M249.1 80.5 L229.2 92.0 L209.2 80.5 L209.2 57.5 L229.2 46.0 L249.1 57.5 Z%22/%3E%3Cpath d=%22M136.5 119.5 L116.6 131.0 L96.7 119.5 L96.7 96.5 L116.6 85.0 L136.5 96.5 Z%22/%3E%3Cpath d=%22M181.5 119.5 L161.6 131.0 L141.7 119.5 L141.7 96.5 L161.6 85.0 L181.5 96.5 Z%22/%3E%3Cpath d=%22M226.6 119.5 L206.6 131.0 L186.7 119.5 L186.7 96.5 L206.6 85.0 L226.6 96.5 Z%22/%3E%3Cpath d=%22M204.1 158.5 L184.1 170.0 L164.2 158.5 L164.2 135.5 L184.1 124.0 L204.1 135.5 Z%22/%3E%3Cpath d=%22M249.1 158.5 L229.2 170.0 L209.2 158.5 L209.2 135.5 L229.2 124.0 L249.1 135.5 Z%22/%3E%3Cpath d=%22M226.6 197.5 L206.6 209.0 L186.7 197.5 L186.7 174.5 L206.6 163.0 L226.6 174.5 Z%22/%3E%3C/svg%3E") center/contain no-repeat;pointer-events:none}
+body::before{top:-14px;right:-18px}
+body::after{bottom:-14px;left:-18px;transform:rotate(180deg)}
+.page-head,.app{position:relative;z-index:1}
+.kicker::before,.grp h2::before,.page-head .ttl>span:first-child::before{content:"";display:inline-block;width:10px;height:11px;margin-right:8px;background:var(--accent);clip-path:var(--hex);vertical-align:-1px}
+.page-head .ttl>span:first-child::before{width:16px;height:18px;margin-right:10px;vertical-align:-2px}
+
+html,body{height:100%}
+body{margin:0;background:radial-gradient(ellipse 75% 70% at 50% 48%,#fffdf6 0%,#fff6e0 42%,#fde9b9 100%) fixed,var(--bg);position:relative;color:var(--fg);font:14px/1.45 var(--f-body);display:flex;flex-direction:column;gap:14px;
+  padding-block:16px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.page-head{flex:none;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px;padding:0 2px 12px;border-bottom:2px solid var(--accent)}
+.page-head .ttl{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin:0;font-size:20px;line-height:1.2;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.page-head .rule{display:inline-block;width:44px;height:2px;background:var(--accent);align-self:center;opacity:.55}
+.page-head .sub{font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted)}
+.page-head .who{margin:0;font:500 13px/1.3 var(--f-mono);font-variant-numeric:tabular-nums}
+.app{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 348px;gap:16px}
+.stage{position:relative;min-width:0;min-height:320px;background:var(--stage);border-radius:14px;overflow:hidden;box-shadow:0 1px 0 #fff8e6 inset,0 8px 28px rgba(168,95,0,.16)}
+#cv{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#cv:active{cursor:grabbing}
+.hint{position:absolute;left:12px;top:10px;right:12px;font:400 11px/1.4 var(--f-mono);color:var(--stage-ink);opacity:.7;pointer-events:none}
+.viewbar{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:6px}
+.viewbar button{font:500 12px/1 var(--f-body);color:var(--stage-ink);background:rgba(28,20,11,.72);border:1px solid var(--stage-line);border-radius:10px;padding:8px 11px;cursor:pointer}
+.viewbar button:hover{border-color:var(--stage-ink)}
+.viewbar button[aria-pressed="true"]{background:var(--stage-ink);color:#1c140b;border-color:var(--stage-ink)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.msg{position:absolute;inset:0;display:none;place-items:center;padding:24px;text-align:center;color:var(--stage-ink)}
+
+.side{min-width:0;min-height:0;overflow:auto;background:var(--panel);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 28px rgba(168,95,0,.10);padding:18px 18px 22px;display:flex;flex-direction:column;gap:16px}
+.kicker{margin:0 0 4px;font:500 11px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{margin:0;font-size:25px;line-height:1.15;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+.lede{margin:8px 0 0;color:var(--muted);max-width:44ch}
+.presets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.presets button{font:600 12px/1.25 var(--f-body);text-align:left;padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--chip);color:var(--fg);cursor:pointer}
+.presets button small{display:block;font:400 11px/1.3 var(--f-mono);color:var(--muted);margin-top:3px}
+.presets button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.presets button[aria-pressed="true"] small{color:inherit;opacity:.85}
+.readout{margin:0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.readout div{padding:8px 10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.readout dt{font:400 11px/1.3 var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.readout dd{margin:2px 0 0;font:500 15px/1.3 var(--f-mono);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.readout .wide{grid-column:1 / -1}
+.note{margin:0;padding:10px 12px;border-left:3px solid var(--accent);background:var(--chip);border-radius:0 10px 10px 0;max-width:60ch}
+.grp{display:flex;flex-direction:column;gap:12px}
+.grp h2{margin:0;padding-top:4px;font:500 11px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.row{display:grid;grid-template-columns:1fr auto;column-gap:10px;row-gap:4px;align-items:baseline}
+.row label,.row .lab{font-weight:500}
+.row output{font:400 12px/1.3 var(--f-mono);font-variant-numeric:tabular-nums;color:var(--muted)}
+.row input[type=range]{grid-column:1 / -1;width:100%;margin:0;accent-color:var(--accent);min-height:24px}
+.row input:disabled{opacity:.4}
+.seg{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 auto;font:500 12px/1 var(--f-body);padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--chip);color:var(--fg);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.check{display:flex;gap:8px;align-items:center;font-weight:500}
+.check input{accent-color:var(--accent);width:16px;height:16px;margin:0}
+.foot{margin:0;font:400 11px/1.5 var(--f-mono);color:var(--muted)}
+
+@media (max-width:860px){
+  html,body{height:auto}
+  .app{display:flex;flex-direction:column;height:auto;flex:none}
+  .stage{height:62vh;min-height:340px;flex:none}
+  .side{overflow:visible}
+}
+</style>
+
+<header class="page-head">
+  <p class="ttl"><span>Petek Armatür</span><span class="rule" aria-hidden="true"></span><span class="sub">İnovasyon ve Yenilikçilik</span></p>
+  <p class="who">Mehmet Bozdemir&nbsp;&nbsp;20651046</p>
+</header>
+
+<div class="app">
+  <section class="stage" id="stage" aria-label="Üç boyutlu armatür modeli">
+    <canvas id="cv" aria-label="Sürükleyerek döndürülebilen 3B armatür"></canvas>
+    <div class="hint">Sürükle: döndür · Tekerlek ya da iki parmak: yakınlaştır</div>
+    <div class="viewbar" role="group" aria-label="Görünüş">
+      <button type="button" data-view="persp" aria-pressed="true">Perspektif</button>
+      <button type="button" data-view="front" aria-pressed="false">Ön</button>
+      <button type="button" data-view="side" aria-pressed="false">Yan</button>
+      <button type="button" data-view="top" aria-pressed="false">Üst</button>
+      <button type="button" id="spin" aria-pressed="true">Döndür</button>
+    </div>
+    <div class="msg" id="msg">Bu tarayıcıda WebGL açılamadı. Model gösterilemiyor.</div>
+  </section>
+
+  <aside class="side">
+    <header>
+      <p class="kicker">Modüler ve Parametrik Tasarım</p>
+      <h1>Petek Armatür</h1>
+      <p class="lede">Gözenekli panellerin geçmeyle birleştiği sarkıt armatür. Değeri değiştirin; form, ışık ve malzeme kullanımı birlikte güncellenir.</p>
+    </header>
+
+    <div class="presets" role="group" aria-label="Alternatifler" id="presets"></div>
+
+    <dl class="readout" id="readout">
+      <div><dt>Panel</dt><dd id="r-n"></dd></div>
+      <div><dt>Panel kenarı</dt><dd id="r-edge"></dd></div>
+      <div><dt>Boyut</dt><dd id="r-size"></dd></div>
+      <div><dt>Açıklık oranı</dt><dd id="r-open"></dd></div>
+      <div class="wide"><dt>Malzeme</dt><dd id="r-mat"></dd></div>
+      <div class="wide"><dt>Geçme: yuva + anahtar</dt><dd id="r-joint"></dd></div>
+    </dl>
+    <p class="note" id="note"></p>
+
+    <div id="controls"></div>
+  </aside>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+var cv=document.getElementById('cv'), stage=document.getElementById('stage');
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- Parametreler (mm, derece, oran) ---------- */
+var P={D:300,div:2,stretch:1,drop:0.2,curv:0.85,hole:0.55,gap:3,thick:3,joint:4,shells:1,ratio:0.68,twist:25,mat:'ply',explode:0,light:1.2,room:true};
+var PRESETS=[
+ {id:'A',name:'A · Seyrek',sub:'büyük gözenek',v:{div:1,hole:0.8,gap:4,curv:0.85,shells:1,drop:0.2,stretch:1,mat:'ply'}},
+ {id:'B',name:'B · Orta',sub:'dengeli',v:{div:2,hole:0.55,gap:3,curv:0.85,shells:1,drop:0.2,stretch:1,mat:'ply'}},
+ {id:'C',name:'C · Yoğun',sub:'küçük gözenek',v:{div:2,hole:0.4,gap:2,curv:0.9,drop:0.25,stretch:1.1,mat:'ply'}}
+];
+var pct=function(v){return Math.round(v*100)+' %'};
+var GROUPS=[
+ {t:'Form',c:[
+  {k:'D',l:'Çap',min:200,max:450,step:10,f:function(v){return v+' mm'}},
+  {k:'div',l:'Bölünme sıklığı',min:0,max:3,step:1,f:function(v){return [12,42,92,162][v]+' panel'}},
+  {k:'stretch',l:'Boy oranı',min:0.8,max:1.5,step:0.05,f:function(v){return '× '+v.toFixed(2)}},
+  {k:'drop',l:'Damla formu',min:0,max:1,step:0.05,f:pct},
+  {k:'curv',l:'Panel eğriliği',min:0,max:1,step:0.05,f:pct}]},
+ {t:'Gözenek ve birleşim',c:[
+  {k:'hole',l:'Gözenek oranı',min:0.2,max:0.9,step:0.01,f:pct},
+  {k:'gap',l:'Panel aralığı',min:0,max:8,step:0.5,f:function(v){return v.toFixed(1)+' mm'}},
+  {k:'thick',l:'Malzeme kalınlığı',min:2,max:6,step:0.5,f:function(v){return v.toFixed(1)+' mm'}},
+  {k:'joint',l:'Yuva derinliği (anahtar için)',min:0,max:10,step:0.5,f:function(v){return v===0?'Kapalı':v.toFixed(1)+' mm'}}]},
+ {t:'Malzeme',c:[
+  {k:'mat',l:'Malzeme',seg:[['ply','Kontrplak'],['pmma','Opal PMMA'],['pla','PLA baskı']]}]},
+ {t:'Montaj ve ışık',c:[
+  {k:'explode',l:'Patlatma',min:0,max:100,step:1,f:function(v){return v+' %'}},
+  {k:'light',l:'Işık gücü',min:0.3,max:3,step:0.1,f:function(v){return v.toFixed(1)+' ×'}},
+  {k:'room',l:'Zemin ve duvar (gölge yüzeyi)',check:true}]}
+];
+var DENS={ply:0.65,pmma:1.19,pla:1.24};
+
+/* ---------- UI üretimi ---------- */
+var ui={};
+(function buildUI(){
+  var host=document.getElementById('controls');
+  GROUPS.forEach(function(g){
+    var sec=document.createElement('section'); sec.className='grp';
+    var h=document.createElement('h2'); h.textContent=g.t; sec.appendChild(h);
+    g.c.forEach(function(c){
+      var row=document.createElement('div'); row.className='row';
+      if(c.seg){
+        var lab=document.createElement('span'); lab.className='lab'; lab.id='l-'+c.k; lab.textContent=c.l; row.appendChild(lab);
+        var box=document.createElement('div'); box.className='seg'; box.setAttribute('role','group'); box.setAttribute('aria-labelledby','l-'+c.k);
+        c.seg.forEach(function(s){
+          var b=document.createElement('button'); b.type='button'; b.textContent=s[1]; b.dataset.val=s[0];
+          b.addEventListener('click',function(){P[c.k]=(typeof s[0]==='number')?s[0]:s[0]; markCustom(); sync(); dirty=true;});
+          box.appendChild(b);
+        });
+        row.appendChild(box); ui[c.k]={seg:box,c:c};
+      } else if(c.check){
+        row.style.display='block';
+        var lb=document.createElement('label'); lb.className='check';
+        var cb=document.createElement('input'); cb.type='checkbox'; cb.id='c-'+c.k;
+        lb.appendChild(cb); lb.appendChild(document.createTextNode(c.l)); row.appendChild(lb);
+        cb.addEventListener('change',function(){P[c.k]=cb.checked; applyRoom();});
+        ui[c.k]={cb:cb,c:c};
+      } else {
+        var l=document.createElement('label'); l.htmlFor='c-'+c.k; l.textContent=c.l; row.appendChild(l);
+        var o=document.createElement('output'); o.id='o-'+c.k; o.htmlFor='c-'+c.k; row.appendChild(o);
+        var r=document.createElement('input'); r.type='range'; r.id='c-'+c.k; r.min=c.min; r.max=c.max; r.step=c.step;
+        r.addEventListener('input',function(){P[c.k]=parseFloat(r.value); if(c.k!=='light'&&c.k!=='explode')markCustom(); sync(); dirty=true;});
+        row.appendChild(r); ui[c.k]={r:r,o:o,c:c};
+      }
+      sec.appendChild(row);
+    });
+    host.appendChild(sec);
+  });
+  var pb=document.getElementById('presets');
+  PRESETS.forEach(function(p){
+    var b=document.createElement('button'); b.type='button'; b.dataset.id=p.id; b.setAttribute('aria-pressed','false');
+    b.innerHTML=p.name+'<small>'+p.sub+'</small>';
+    b.addEventListener('click',function(){ for(var k in p.v)P[k]=p.v[k]; activePreset=p.id; sync(); dirty=true; });
+    pb.appendChild(b);
+  });
+})();
+var activePreset='B';
+function markCustom(){activePreset=null;}
+function sync(){
+  for(var k in ui){
+    var u=ui[k];
+    if(u.r){u.r.value=P[k]; u.o.textContent=u.c.f(P[k]);}
+    else if(u.cb){u.cb.checked=!!P[k];}
+    else if(u.seg){[].forEach.call(u.seg.children,function(b){b.setAttribute('aria-pressed',String(String(P[k])===b.dataset.val));});}
+  }
+  [].forEach.call(document.querySelectorAll('#presets button'),function(b){b.setAttribute('aria-pressed',String(b.dataset.id===activePreset));});
+}
+
+/* ---------- Taban geometri: ikosfer ve ikili hücreler ---------- */
+var baseCache={};
+function getBase(detail){
+  if(baseCache[detail])return baseCache[detail];
+  var g=new THREE.IcosahedronGeometry(1,detail), pos=g.attributes.position, ix=g.index;
+  var verts=[], faces=[], map=[];
+  var count=ix?ix.count:pos.count;
+  for(var i=0;i<count;i++){
+    var j=ix?ix.getX(i):i;
+    var v=new THREE.Vector3(pos.getX(j),pos.getY(j),pos.getZ(j)).normalize();
+    var found=-1;
+    for(var q=0;q<verts.length;q++){ if(verts[q].distanceToSquared(v)<1e-6){found=q;break;} }
+    if(found<0){verts.push(v);found=verts.length-1;}
+    map.push(found);
+  }
+  for(i=0;i<map.length;i+=3)faces.push([map[i],map[i+1],map[i+2]]);
+  var cents=faces.map(function(f){return verts[f[0]].clone().add(verts[f[1]]).add(verts[f[2]]).normalize();});
+  var vf=verts.map(function(){return [];});
+  faces.forEach(function(f,fi){f.forEach(function(vi){vf[vi].push(fi);});});
+  var cells=verts.map(function(n,vi){
+    var a=Math.abs(n.x)<0.9?new THREE.Vector3(1,0,0):new THREE.Vector3(0,1,0);
+    var t1=a.clone().sub(n.clone().multiplyScalar(a.dot(n))).normalize();
+    var t2=new THREE.Vector3().crossVectors(n,t1);
+    var pts=vf[vi].map(function(fi){
+      var c=cents[fi], p=c.clone().multiplyScalar(1/c.dot(n)), d=p.sub(n);
+      return {x:d.dot(t1),y:d.dot(t2),fi:fi};
+    });
+    pts.sort(function(p,q){return Math.atan2(p.y,p.x)-Math.atan2(q.y,q.x);});
+    var rho=1e9, area=0, perim=0;
+    for(var i=0;i<pts.length;i++){
+      var A=pts[i],B=pts[(i+1)%pts.length], cr=A.x*B.y-A.y*B.x, len=Math.hypot(B.x-A.x,B.y-A.y);
+      rho=Math.min(rho,Math.abs(cr)/len); area+=cr/2; perim+=len;
+    }
+    var nb=pts.map(function(p,i){
+      var fa=faces[p.fi], fb=faces[pts[(i+1)%pts.length].fi];
+      for(var k=0;k<3;k++){var w=fa[k]; if(w!==vi&&fb.indexOf(w)>=0)return w;}
+      return -1;
+    });
+    return {vi:vi,nb:nb,n:n,t1:t1,t2:t2,pts:pts,rho:rho,area:Math.abs(area),perim:perim};
+  });
+  g.dispose();
+  return (baseCache[detail]={cells:cells});
+}
+
+/* ---------- Kabuk üretimi ---------- */
+function buildShell(Rs,detail,hole,twist,Rmax){
+  var base=getBase(detail), gapR=P.gap/10, t=P.thick/10, off=P.explode/100*Rs*0.45;
+  var cs=Math.cos(twist), sn=Math.sin(twist), SUB=5, C=P.curv;
+  var pos=[], idx=[], st={n:base.cells.length,J:1e9,full:0,poly:0,hole:0,edge:0,edges:0};
+
+  function ring(P2,cell,sign){
+    var out=[], n=cell.n, t1=cell.t1, t2=cell.t2;
+    for(var i=0;i<P2.length;i+=2){
+      var x=P2[i], y=P2[i+1];
+      var qx=n.x+t1.x*x+t2.x*y, qy=n.y+t1.y*x+t2.y*y, qz=n.z+t1.z*x+t2.z*y;
+      var len=Math.sqrt(qx*qx+qy*qy+qz*qz), k=(1-C)+C/len;
+      var dx=n.x*(1-C)+qx/len*C, dy=n.y*(1-C)+qy/len*C, dz=n.z*(1-C)+qz/len*C;
+      var dl=Math.sqrt(dx*dx+dy*dy+dz*dz)||1, h=sign*t/2;
+      var px=qx*k*Rs+dx/dl*h+n.x*off, py=qy*k*Rs+dy/dl*h+n.y*off, pz=qz*k*Rs+dz/dl*h+n.z*off;
+      var rx=px*cs+pz*sn, rz=-px*sn+pz*cs;
+      var ny=Math.max(-1,Math.min(1,py/Rmax)), f=1-P.drop*0.45*(ny+1)/2;
+      out.push(rx*f,py*P.stretch,rz*f);
+    }
+    return out;
+  }
+  function strip(A,B){
+    var K=A.length/3, b0=pos.length/3, i;
+    for(i=0;i<A.length;i++)pos.push(A[i]);
+    for(i=0;i<B.length;i++)pos.push(B[i]);
+    for(i=0;i<K;i++){
+      var j=(i+1)%K, a=b0+i, b=b0+j, c=b0+K+j, d=b0+K+i;
+      idx.push(a,b,c,a,c,d);
+    }
+  }
+  base.cells.forEach(function(cell){
+    var m=cell.pts.length, rho=cell.rho, s=1-gapR/(2*rho*Rs);
+    if(s<0.25)s=0.25;
+    var rh=hole*rho*s, O2=[], H2=[];
+    var J=Math.min(P.joint/10,Math.max(0,(rho*s-rh)*Rs*0.8)), tabD=(J>0)?(gapR+J-0.025)/Rs:0, slotD=J/Rs;
+    if(J<st.J)st.J=J;
+    var US=[0,1/3,1/3,2/3,2/3];
+    for(var i=0;i<m;i++){
+      var a=cell.pts[i], b=cell.pts[(i+1)%m];
+      var ex=(b.x-a.x)*s, ey=(b.y-a.y)*s, el=Math.hypot(ex,ey)||1, ox=ey/el, oy=-ex/el;
+      var dep=-slotD, OF=[0,0,dep,dep,0];
+      for(var q=0;q<SUB;q++){
+        var u=(J>0)?US[q]:q/SUB, of=(J>0)?OF[q]:0;
+        var x=(a.x+(b.x-a.x)*u)*s+ox*of, y=(a.y+(b.y-a.y)*u)*s+oy*of, ang=Math.atan2(y,x);
+        O2.push(x,y); H2.push(rh*Math.cos(ang),rh*Math.sin(ang));
+      }
+    }
+    st.full+=cell.area*Rs*Rs; st.poly+=cell.area*s*s*Rs*Rs; st.hole+=Math.PI*rh*rh*Rs*Rs;
+    st.edge+=cell.perim*s*Rs; st.edges+=m;
+    var OT=ring(O2,cell,1), OB=ring(O2,cell,-1), HT=ring(H2,cell,1), HB=ring(H2,cell,-1);
+    strip(OT,HT); strip(OB,HB); strip(OT,OB); strip(HT,HB);
+  });
+  var geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(pos),3));
+  geo.setIndex(new THREE.BufferAttribute(new Uint32Array(idx),1));
+  geo.computeVertexNormals();
+  geo.computeBoundingSphere();
+  return {geo:geo,st:st};
+}
+
+/* ---------- Sahne ---------- */
+var renderer, scene, cam, outer, inner, bulb, light, cord, floor, wall, keys;
+var mats={};
+try{
+  renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
+}catch(e){
+  document.getElementById('msg').style.display='grid'; cv.style.display='none'; renderer=null;
+}
+var dirty=true;
+if(renderer){
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  scene=new THREE.Scene(); scene.background=new THREE.Color(0x1c140b);
+  cam=new THREE.PerspectiveCamera(36,1,1,700);
+  scene.add(new THREE.HemisphereLight(0x9aa3b8,0x2a1c10,0.65));
+
+  function mk(o){o.side=THREE.DoubleSide; var m=new THREE.MeshStandardMaterial(o); m.shadowSide=THREE.DoubleSide; return m;}
+  mats.ply=mk({color:0xcaa070,roughness:0.78,metalness:0,emissive:0x3a1d06,emissiveIntensity:0.55});
+  mats.pmma=mk({color:0xf4eee0,roughness:0.3,metalness:0,transparent:true,opacity:0.74,emissive:0xffd79a,emissiveIntensity:0.45});
+  mats.pla=mk({color:0xe8e5de,roughness:0.5,metalness:0,emissive:0x2a2218,emissiveIntensity:0.4});
+
+  mats.key=mk({color:0x7d5a30,roughness:0.7,metalness:0,emissive:0x2a1204,emissiveIntensity:0.5});
+  keys=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),mats.key,700); keys.count=0; keys.castShadow=true; keys.frustumCulled=false;
+  outer=new THREE.Mesh(new THREE.BufferGeometry(),mats.ply); inner=new THREE.Mesh(new THREE.BufferGeometry(),mats.ply);
+  scene.add(outer,inner,keys);
+
+  light=new THREE.PointLight(0xffc98a,2,175,1.4);
+  light.castShadow=true; light.shadow.mapSize.set(1024,1024);
+  light.shadow.camera.near=0.5; light.shadow.camera.far=200; light.shadow.bias=-0.002; light.shadow.normalBias=0.05; light.shadow.radius=3;
+  scene.add(light);
+  bulb=new THREE.Mesh(new THREE.SphereGeometry(1.7,20,14),new THREE.MeshBasicMaterial({color:0xffdca8}));
+  scene.add(bulb);
+  cord=new THREE.Mesh(new THREE.CylinderGeometry(0.14,0.14,100,8),new THREE.MeshStandardMaterial({color:0x0d0c0b,roughness:0.9}));
+  scene.add(cord);
+
+  floor=new THREE.Mesh(new THREE.PlaneGeometry(420,420),new THREE.MeshStandardMaterial({color:0x3a332c,roughness:0.95}));
+  floor.rotation.x=-Math.PI/2; floor.position.y=-52; floor.receiveShadow=true; scene.add(floor);
+  wall=new THREE.Mesh(new THREE.PlaneGeometry(420,300),new THREE.MeshStandardMaterial({color:0x3a332c,roughness:0.95}));
+  wall.position.set(0,40,-62); wall.receiveShadow=true; scene.add(wall);
+}
+function applyRoom(){ if(!renderer)return; floor.visible=wall.visible=!!P.room; }
+
+function applyMat(){
+  var o=(P.mat==='mix')?mats.ply:mats[P.mat], i=(P.mat==='mix')?mats.pmma:mats[P.mat];
+  outer.material=o; inner.material=i;
+  outer.castShadow=(o!==mats.pmma); inner.castShadow=(i!==mats.pmma);
+}
+
+/* ---------- Yeniden kurma ve sayılar ---------- */
+function fmt(v,d){return v.toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function rebuild(){
+  var R=P.D/20, o=buildShell(R,P.div,P.hole,0,R), n=null;
+  if(renderer){
+    outer.geometry.dispose(); outer.geometry=o.geo;
+    if(P.shells===2){
+      n=buildShell(R*P.ratio,Math.max(0,P.div-1),P.hole*0.85,P.twist*Math.PI/180,R);
+      inner.geometry.dispose(); inner.geometry=n.geo; inner.visible=true;
+    } else inner.visible=false;
+    applyMat(); buildKeys(R);
+    cord.position.y=R*P.stretch+50; cord.visible=true;
+    bulb.position.set(0,0,0); light.position.set(0,0,0);
+  } else if(P.shells===2){ n=buildShell(R*P.ratio,Math.max(0,P.div-1),P.hole*0.85,P.twist*Math.PI/180,R); }
+
+  var t=P.thick/10, oOpen=1-(o.st.poly-o.st.hole)/o.st.full, net=oOpen;
+  var areaO=o.st.poly-o.st.hole, areaI=n?(n.st.poly-n.st.hole):0;
+  if(n){ var iOpen=1-(n.st.poly-n.st.hole)/n.st.full; net=1-(1-oOpen)-(1-iOpen)+(1-oOpen)*(1-iOpen); net=oOpen*iOpen; }
+  var dO=(P.mat==='mix')?DENS.ply:DENS[P.mat], dI=(P.mat==='mix')?DENS.pmma:DENS[P.mat];
+  var mass=areaO*t*dO+areaI*t*dI, area=(areaO+areaI)/10000;
+  document.getElementById('r-n').textContent=String(o.st.n+(n?n.st.n:0))+(n?' ('+o.st.n+' + '+n.st.n+')':'');
+  document.getElementById('r-edge').textContent='≈ '+fmt(o.st.edge/o.st.edges*10,0)+' mm';
+  document.getElementById('r-size').textContent='Ø'+P.D+' × '+Math.round(P.D*P.stretch)+' mm';
+  document.getElementById('r-open').textContent='% '+fmt(oOpen*100,0);
+  document.getElementById('r-mat').textContent=fmt(area,2)+' m² · '+fmt(mass,0)+' g';
+  document.getElementById('r-joint').textContent=(P.joint>0)?fmt(o.st.J*10,1)+' mm yuva · tolerans 0,25 mm':'Kapalı';
+  var pc=net*100, txt;
+  if(pc>=45) txt='Geniş açıklık: ışık her yöne yayılır, zemin ve duvardaki gölge deseni zayıf kalır.';
+  else if(pc>=20) txt='Dengeli açıklık: ışık yayılır, gözenek deseni zemin ve duvarda okunur.';
+  else txt='Düşük açıklık: ortam loş ve yönlü, gölge deseni belirgin.';
+  if(P.mat==='pmma'||P.mat==='mix') txt+=' Opal yüzey ışığı yumuşatır; gölge deseni silikleşir.';
+  document.getElementById('note').textContent=txt;
+  if(renderer) light.intensity=P.light*1.7;
+}
+
+
+/* ---------- Anahtarlar (3B) ---------- */
+function buildKeys(R){
+  if(!keys)return;
+  var base=getBase(P.div), cnt=0, gapR=P.gap/10, t=P.thick/10, off=P.explode/100*R*0.45, C=P.curv;
+  var mtx=new THREE.Matrix4(), X=new THREE.Vector3(), Y=new THREE.Vector3(), Z=new THREE.Vector3(), Cc=new THREE.Vector3(), A=new THREE.Vector3(), B=new THREE.Vector3();
+  function w(cell,x,y,sign,out){
+    var n=cell.n,t1=cell.t1,t2=cell.t2;
+    var qx=n.x+t1.x*x+t2.x*y, qy=n.y+t1.y*x+t2.y*y, qz=n.z+t1.z*x+t2.z*y;
+    var len=Math.sqrt(qx*qx+qy*qy+qz*qz), k=(1-C)+C/len;
+    var dx=n.x*(1-C)+qx/len*C, dy=n.y*(1-C)+qy/len*C, dz=n.z*(1-C)+qz/len*C;
+    var dl=Math.sqrt(dx*dx+dy*dy+dz*dz)||1, h=sign*t/2;
+    var px=qx*k*R+dx/dl*h+n.x*off, py=qy*k*R+dy/dl*h+n.y*off, pz=qz*k*R+dz/dl*h+n.z*off;
+    var ny=Math.max(-1,Math.min(1,py/R)), f=1-P.drop*0.45*(ny+1)/2;
+    out.set(px*f,py*P.stretch,pz*f);
+  }
+  base.cells.forEach(function(cell){
+    var m=cell.pts.length, rho=cell.rho, s=Math.max(0.25,1-gapR/(2*rho*R)), rh=P.hole*rho*s;
+    var J=Math.min(P.joint/10,Math.max(0,(rho*s-rh)*R*0.8)); if(J<=0)return;
+    for(var i=0;i<m;i++){
+      if(!(cell.vi<cell.nb[i])||cnt>=700)continue;
+      var a=cell.pts[i], b=cell.pts[(i+1)%m], ex=(b.x-a.x)*s, ey=(b.y-a.y)*s, el=Math.hypot(ex,ey)||1;
+      var ux=ex/el, uy=ey/el, mx=(a.x+b.x)/2*s+uy*gapR/(2*R), my=(a.y+b.y)/2*s-ux*gapR/(2*R);
+      w(cell,mx,my,0,Cc); w(cell,mx+ux*0.01,my+uy*0.01,0,A); w(cell,mx-ux*0.01,my-uy*0.01,0,B);
+      X.copy(A).sub(B).normalize();
+      w(cell,mx,my,1,A); w(cell,mx,my,-1,B); Z.copy(A).sub(B).normalize();
+      Y.crossVectors(Z,X).normalize(); Z.crossVectors(X,Y);
+      X.multiplyScalar(el*R/3-0.025); Y.multiplyScalar(2*J+gapR-0.025); Z.multiplyScalar(t*0.96);
+      mtx.makeBasis(X,Y,Z); mtx.setPosition(Cc); keys.setMatrixAt(cnt++,mtx);
+    }
+  });
+  keys.count=cnt; keys.instanceMatrix.needsUpdate=true;
+}
+
+/* ---------- Kamera: sürükle, yakınlaştır, hazır görünüşler ---------- */
+var V={th:0.6,ph:1.3,d:100,gth:0.6,gph:1.3,gd:100}, spin=!reduce, userMoved=false;
+var VIEWS={persp:[0.6,1.3],front:[0,Math.PI/2],side:[Math.PI/2,Math.PI/2],top:[0,0.03]};
+function setView(name){
+  var v=VIEWS[name]; var d=v[0]-V.th; d=Math.atan2(Math.sin(d),Math.cos(d)); V.gth=V.th+d; V.gph=v[1];
+  [].forEach.call(document.querySelectorAll('[data-view]'),function(b){b.setAttribute('aria-pressed',String(b.dataset.view===name));});
+}
+[].forEach.call(document.querySelectorAll('[data-view]'),function(b){b.addEventListener('click',function(){setView(b.dataset.view);});});
+var spinBtn=document.getElementById('spin'); spinBtn.setAttribute('aria-pressed',String(spin));
+spinBtn.addEventListener('click',function(){spin=!spin;spinBtn.setAttribute('aria-pressed',String(spin));});
+
+var ptrs={}, lastPinch=0;
+cv.addEventListener('pointerdown',function(e){cv.setPointerCapture(e.pointerId);ptrs[e.pointerId]={x:e.clientX,y:e.clientY};lastPinch=0;});
+cv.addEventListener('pointermove',function(e){
+  var p=ptrs[e.pointerId]; if(!p)return;
+  var ids=Object.keys(ptrs);
+  if(ids.length===1){
+    V.gth-=(e.clientX-p.x)*0.008; V.gph=Math.max(0.03,Math.min(Math.PI-0.03,V.gph-(e.clientY-p.y)*0.008));
+    V.th=V.gth; V.ph=V.gph;
+    [].forEach.call(document.querySelectorAll('[data-view]'),function(b){b.setAttribute('aria-pressed','false');});
+  }
+  p.x=e.clientX; p.y=e.clientY;
+  if(ids.length===2){
+    var a=ptrs[ids[0]], b=ptrs[ids[1]], dist=Math.hypot(a.x-b.x,a.y-b.y);
+    if(lastPinch)V.gd=V.d=Math.max(40,Math.min(240,V.d*lastPinch/dist));
+    lastPinch=dist;
+  }
+});
+function up(e){delete ptrs[e.pointerId];lastPinch=0;}
+cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+cv.addEventListener('wheel',function(e){e.preventDefault();V.gd=Math.max(40,Math.min(240,V.gd*(1+e.deltaY*0.001)));},{passive:false});
+
+function resize(){
+  if(!renderer)return;
+  var w=stage.clientWidth,h=stage.clientHeight; if(!w||!h)return;
+  renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix();
+}
+if(window.ResizeObserver)new ResizeObserver(resize).observe(stage); else window.addEventListener('resize',resize);
+
+function frame(){
+  requestAnimationFrame(frame);
+  if(!renderer)return;
+  if(dirty){dirty=false;rebuild();}
+  var drag=Object.keys(ptrs).length>0;
+  if(spin&&!drag&&V.gph>0.2&&V.gph<Math.PI-0.2){V.gth+=0.004;}
+  V.th+=(V.gth-V.th)*0.14; V.ph+=(V.gph-V.ph)*0.14; V.d+=(V.gd-V.d)*0.14;
+  cam.position.set(V.d*Math.sin(V.ph)*Math.sin(V.th),V.d*Math.cos(V.ph),V.d*Math.sin(V.ph)*Math.cos(V.th));
+  cam.lookAt(0,0,0);
+  renderer.render(scene,cam);
+}
+
+if(stage.clientWidth<520){V.d=V.gd=125;}
+sync(); applyRoom(); resize(); rebuild(); frame();
+})();
+</script>
+
+</body></html>
